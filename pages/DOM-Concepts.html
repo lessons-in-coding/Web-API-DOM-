@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Concepts Example</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/DOM-Concepts.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Web API</h1>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">DOM-API</a></li>
+            <li><a href="../pages/DOM-Example.html">DOM-Example</a></li>
+            <li><a href="#">API</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1 id="title">DOM Concepts Example</h1>
+        <p>
+          The Document Object Model (DOM) API is a programming interface for web
+          documents. It represents the structure of HTML and XML documents as a
+          tree-like structure, where each node represents an element, attribute,
+          or piece of text in the document. The DOM API provides methods and
+          properties to access, manipulate, and update the content and structure
+          of web documents dynamically using scripting languages like
+          JavaScript.
+        </p>
+        <br />
+
+        <p>
+          For a beginner, understanding the DOM API involves grasping the
+          following key concepts:
+        </p>
+        <br />
+
+        <ol>
+          <li>
+            <b>Nodes:</b> Everything in a DOM tree is a node. There are
+            different types of nodes, such as element nodes, attribute nodes,
+            text nodes, etc.
+          </li>
+          <li>
+            <b>Elements:</b> Elements are the building blocks of HTML documents,
+            representing the various HTML tags like
+            <b>&lt;div&gt;, &lt;p&gt;, &lt;a&gt; </b> etc. Each element in the
+            DOM tree is represented by an element node.
+          </li>
+          <li>
+            <b>Attributes:</b> Attributes are the properties of elements, such
+            as <b>id, class, src, href, </b> etc. Each attribute is represented
+            by an attribute node.
+          </li>
+          <li>
+            <b>Methods and Properties:</b> The DOM API provides a wide range of
+            methods and properties to interact with nodes. These include methods
+            to access elements by their IDs or class names, to create new
+            elements dynamically, to modify element content or attributes, to
+            traverse the DOM tree, and more.
+          </li>
+          <li>
+            <b>Events:</b> The DOM API allows you to handle user interactions
+            and browser events such as clicks, keypresses, mouse movements,
+            etc., through event listeners attached to specific elements.
+          </li>
+          <li>
+            <b>Manipulation and Traversal:</b> With the DOM API, you can
+            manipulate the structure and content of web documents by adding,
+            removing, or modifying elements and attributes. You can also
+            traverse the DOM tree to navigate between different elements and
+            their relationships.
+          </li>
+        </ol>
+        <br />
+
+        <p>
+          Overall, the DOM API is essential for building dynamic and interactive
+          web applications, as it provides the means to access and manipulate
+          web content in real-time, enabling developers to create rich user
+          experiences. Learning the DOM API is fundamental for anyone looking to
+          work with web development and JavaScript.
+        </p>
+        <hr />
+
+        <h2>1. Nodes:</h2>
+        <p>In the Document Object Model (DOM), everything is a node.</p>
+        <p>For example, in the following HTML:</p>
+        <pre><code>
+          &lt;div id="container"&gt;
+              &lt;p&gt;This is a paragraph.&lt;/p&gt;
+          &lt;/div&gt;
+          </code></pre>
+        <p>
+          The div element with id "container" and the paragraph element are
+          nodes.
+        </p>
+
+        <h2>2. Elements:</h2>
+        <p>Elements are the individual tags in an HTML document.</p>
+        <p>To access an element using JavaScript:</p>
+        <pre><code>
+          var paragraph = document.getElementsByTagName("p")[0];
+          console.log(paragraph); // This will log the paragraph element
+          </code></pre>
+
+        <h2>3. Attributes:</h2>
+        <p>Attributes are the properties of HTML elements.</p>
+        <p>For example, to access and modify an attribute:</p>
+        <pre><code>
+          var link = document.getElementById("myLink");
+          link.setAttribute("href", "https://www.example.com");
+          </code></pre>
+
+        <h2>4. Methods and Properties:</h2>
+        <p>
+          The DOM API provides methods and properties to interact with nodes.
+        </p>
+        <p>For example, to create a new element and append it to the DOM:</p>
+        <pre><code>
+          var newParagraph = document.createElement("p");
+          newParagraph.textContent = "This is a new paragraph.";
+          document.body.appendChild(newParagraph);
+          </code></pre>
+
+        <h2>5. Events:</h2>
+        <p>
+          Events allow you to respond to user interactions and browser actions.
+        </p>
+        <p>For example, to add a click event listener to a button:</p>
+        <pre><code>
+          var button = document.getElementById("myButton");
+          button.addEventListener("click", function() {
+              alert("Button clicked!");
+          });
+          </code></pre>
+
+        <h2>6. Manipulation and Traversal:</h2>
+        <p>
+          You can manipulate the DOM tree by adding, removing, or modifying
+          elements and attributes.
+        </p>
+        <p>To traverse the DOM tree:</p>
+        <pre><code>
+          var container = document.getElementById("container");
+          var children = container.children;
+          console.log(children); // This will log the child elements of the container
+          </code></pre>
+
+        <!-- Example HTML elements -->
+        <div id="container">
+          <p>This is a paragraph.</p>
+        </div>
+        <a id="myLink" href="#">Example Link</a>
+        <button id="myButton">Click Me</button>
+        <hr />
+      </section>
+      <br />
+      <hr />
+      <br />
+
+      <article class="article">
+        <h2>Methods:</h2>
+        <p>
+          Methods in the DOM API are functions that allow you to perform actions
+          on elements or the document itself. Here are some commonly used
+          methods:
+        </p>
+
+        <h3>getElementById(id):</h3>
+        <p>
+          This method retrieves an element from the document based on its ID
+          attribute. Example:
+        </p>
+        <pre><code>var element = document.getElementById("myElement");</code></pre>
+
+        <h3>getElementsByClassName(className):</h3>
+        <p>
+          This method returns a collection of elements with the specified class
+          name. Example:
+        </p>
+        <pre><code>var elements = document.getElementsByClassName("myClass");</code></pre>
+
+        <h3>getElementsByTagName(tagName):</h3>
+        <p>
+          This method returns a collection of elements with the specified tag
+          name. Example:
+        </p>
+        <pre><code>var elements = document.getElementsByTagName("div");</code></pre>
+
+        <h3>createElement(tagName):</h3>
+        <p>
+          This method creates a new element with the specified tag name.
+          Example:
+        </p>
+        <pre><code>var newElement = document.createElement("p");</code></pre>
+
+        <h3>appendChild(node):</h3>
+        <p>
+          This method appends a node as the last child of a specified parent
+          node. Example:
+        </p>
+        <pre><code>parentElement.appendChild(newElement);</code></pre>
+
+        <h2>Properties:</h2>
+        <p>
+          Properties in the DOM API represent characteristics or attributes of
+          elements. Here are some commonly used properties:
+        </p>
+
+        <h3>id:</h3>
+        <p>
+          This property gets or sets the ID attribute of an element. Example:
+        </p>
+        <pre><code>var elementId = element.id;</code></pre>
+
+        <h3>className:</h3>
+        <p>
+          This property gets or sets the class attribute of an element. Example:
+        </p>
+        <pre><code>var elementClass = element.className;</code></pre>
+
+        <h3>innerHTML:</h3>
+        <p>
+          This property gets or sets the HTML content of an element. Example:
+        </p>
+        <pre><code>var htmlContent = element.innerHTML;</code></pre>
+
+        <h3>textContent:</h3>
+        <p>
+          This property gets or sets the text content of an element. Example:
+        </p>
+        <pre><code>var textContent = element.textContent;</code></pre>
+
+        <h3>style:</h3>
+        <p>
+          This property provides access to the inline CSS styles of an element.
+          Example:
+        </p>
+        <pre><code>element.style.color = "red";</code></pre>
+
+        <p>
+          Understanding and using these methods and properties is essential for
+          manipulating and interacting with elements in the DOM. As you become
+          more familiar with them, you'll have more control over your web pages'
+          behavior and appearance.
+        </p>
+      </article>
+      <br />
+      <hr />
+      <br />
+
+      <article class="article">
+        <h3>What are Events?</h3>
+        <p>
+          Events are actions or occurrences that happen in the system or in the
+          DOM tree. They can be triggered by the user's actions (like clicking a
+          button), browser actions (like page loading), or other system events.
+        </p>
+
+        <h3>How to Use Events?</h3>
+        <p>
+          You can attach event listeners to elements in the DOM to listen for
+          specific events. When an event occurs, the associated event listener
+          function is executed, allowing you to respond to the event.
+        </p>
+
+        <h3>Examples of Events:</h3>
+        <h3>Click Event:</h3>
+        <p>This event occurs when the user clicks on an element. Example:</p>
+        <pre><code>var button = document.getElementById("myButton");
+          button.addEventListener("click", function() {
+              console.log("Button clicked!");
+          });
+        </code></pre>
+
+        <h3>Mouseover and Mouseout Events:</h3>
+        <p>
+          These events occur when the mouse pointer moves over and away from an
+          element, respectively. Example:
+        </p>
+        <pre><code>
+          var element = document.getElementById("myElement");
+          element.addEventListener("mouseover", function() {
+              console.log("Mouse over the element!");
+          });
+          element.addEventListener("mouseout", function() {
+              console.log("Mouse out of the element!");
+          });
+        </code></pre>
+
+        <h3>Keydown Event:</h3>
+        <p>
+          This event occurs when a key is pressed down while the element has
+          focus. Example:
+        </p>
+        <pre><code>
+          var input = document.getElementById("myInput");
+          input.addEventListener("keydown", function(event) {
+              console.log("Key pressed: " + event.key);
+          });
+        </code></pre>
+        <h3>Load Event:</h3>
+        <p>
+          This event occurs when the document and all its external resources are
+          fully loaded. Example:
+        </p>
+        <pre><code>
+          window.addEventListener("load", function() {
+            console.log("Page fully loaded!");
+          });
+        </code></pre>
+
+        <h3>Why Events Are Important?</h3>
+        <p>
+          Events are crucial for creating interactive web pages. They allow you
+          to add functionality like responding to user input, updating content
+          dynamically, and handling errors. Understanding how to use events
+          effectively is essential for building engaging and responsive web
+          applications.
+        </p>
+
+        <p>
+          By mastering event handling in JavaScript, you can create dynamic and
+          interactive web experiences that respond to user actions in real-time.
+          Practice and experimentation with events will help you become
+          proficient in web development.
+        </p>
+      </article>
+      <br />
+      <hr />
+      <br />
+
+      <article class="article">
+        <h3>Manipulation:</h3>
+        <p>
+          Manipulation involves modifying the structure, content, or appearance
+          of elements in the DOM. Here are some common manipulation tasks:
+        </p>
+
+        <h3>Creating New Elements:</h3>
+        <p>
+          You can create new HTML elements using the createElement() method and
+          append them to the document. Example:
+        </p>
+        <pre><code>var newParagraph = document.createElement("p");
+          newParagraph.textContent = "This is a new paragraph.";
+          document.body.appendChild(newParagraph);</code></pre>
+
+        <h3>Modifying Element Content:</h3>
+        <p>
+          You can change the text or HTML content of existing elements using
+          properties like textContent or innerHTML. Example:
+        </p>
+        <pre><code>var element = document.getElementById("myElement");
+          element.textContent = "New text content";</code></pre>
+
+        <h3>Adding or Removing Classes:</h3>
+        <p>
+          You can add or remove CSS classes from elements to change their
+          appearance or behavior. Example:
+        </p>
+        <pre><code>var element = document.getElementById("myElement");
+          element.classList.add("active");
+          element.classList.remove("inactive");</code></pre>
+
+        <h3>Changing Styles:</h3>
+        <p>
+          You can modify inline CSS styles of elements using the style property.
+          Example:
+        </p>
+        <pre><code>var element = document.getElementById("myElement");
+          element.style.color = "red";
+          element.style.backgroundColor = "yellow";</code></pre>
+
+        <h3>Traversal:</h3>
+        <p>
+          Traversal involves navigating through the DOM tree to find specific
+          elements or to move from one element to another. Here are some common
+          traversal tasks:
+        </p>
+
+        <h3>Finding Elements by ID, Class, or Tag Name:</h3>
+        <p>
+          You can use methods like getElementById(), getElementsByClassName(),
+          and getElementsByTagName() to find elements in the document. Example:
+        </p>
+        <pre><code>var elementById = document.getElementById("myId");
+          var elementsByClass = document.getElementsByClassName("myClass");
+          var elementsByTag = document.getElementsByTagName("div");</code></pre>
+
+        <h3>Accessing Parent, Child, and Sibling Elements:</h3>
+        <p>
+          You can access the parent, child, and sibling elements of a given
+          element using properties like parentNode, childNodes, firstChild,
+          lastChild, nextSibling, and previousSibling. Example:
+        </p>
+        <pre><code>var parent = element.parentNode;
+          var children = element.childNodes;
+          var firstChild = element.firstChild;
+          var lastChild = element.lastChild;
+          var nextSibling = element.nextSibling;
+          var previousSibling = element.previousSibling;</code></pre>
+
+        <h3>Querying with Selectors:</h3>
+        <p>
+          You can use methods like querySelector() and querySelectorAll() to
+          select elements using CSS-style selectors. Example:
+        </p>
+        <pre><code>var element = document.querySelector(".myClass");
+          var elements = document.querySelectorAll("div");</code></pre>
+
+        <p>
+          Manipulation and traversal are fundamental concepts in web
+          development. Mastering these concepts will enable you to create
+          dynamic and interactive web pages with ease. Practice and
+          experimentation are key to becoming proficient in using manipulation
+          and traversal techniques effectively.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2024 Web API</p>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- JavaScript -->
+    <script src="../assets/js/DOM-Concepts.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

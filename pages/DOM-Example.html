@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <title>Dynamic Element Creation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      .section {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Different background colors for image, video, and audio sections */
+      #image-section {
+        background-color: #badc58; /* Image background color */
+      }
+
+      #video-section {
+        background-color: #ff7979; /* Video background color */
+      }
+
+      #audio-section {
+        background-color: #686de0; /* Audio background color */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Web API</h1>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/DOM-Concepts.html">DOM-API</a></li>
+            <li><a href="#">DOM-Example</a></li>
+            <li><a href="#">API</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2>Web API</h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="119.5 281.5 291 379"
+          width="750"
+          height="auto"
+        >
+          <g fill="none">
+            <path fill="#ededff" d="M120 282h290v378H120z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M120 282h290v378H120z"
+            />
+            <text transform="translate(125 287)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Window
+              </tspan>
+            </text>
+            <path fill="#ffc0c0" d="M130 312h266.984v338H130z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M130 312h266.984v338H130z"
+            />
+            <text transform="translate(135 317)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Document
+              </tspan>
+            </text>
+            <path fill="#ffffc0" d="M143.016 340H390v80H143.016z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M143.016 340H390v80H143.016z"
+            />
+            <text transform="translate(148.016 345)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Element
+              </tspan>
+            </text>
+            <path fill="#ffffc0" d="M143.016 430H390v130H143.016z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M143.016 430H390v130H143.016z"
+            />
+            <text transform="translate(148.016 435)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Element
+              </tspan>
+            </text>
+            <path fill="#c0ffff" d="M150 460h230v30H150z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M150 460h230v30H150z"
+            />
+            <text transform="translate(155 465)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Element
+              </tspan>
+            </text>
+            <path fill="#c0ffff" d="M150 500h230v30H150z" />
+            <path
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M150 500h230v30H150z"
+            />
+            <text transform="translate(155 505)" fill="#000">
+              <tspan
+                font-family="Courier New"
+                font-size="14"
+                font-weight="400"
+                x="0"
+                y="12"
+              >
+                Element
+              </tspan>
+            </text>
+          </g>
+        </svg>
+      </section>
+    </main>
+
+    <script>
+      // Function to create section divs
+      function createSection(id, headerText) {
+        var section = document.createElement("div");
+        section.className = "section";
+        section.id = id;
+
+        var header = document.createElement("h2");
+        header.className = "section-header";
+        header.textContent = headerText;
+        section.appendChild(header);
+
+        document.body.appendChild(section);
+
+        return section;
+      }
+
+      // Create sections dynamically
+      var sections = [
+        { id: "link-section", headerText: "Hello World!" },
+        { id: "image-section", headerText: "Image" },
+        { id: "video-section", headerText: "Video" },
+        { id: "audio-section", headerText: "Audio" },
+      ];
+
+      sections.forEach((section) => {
+        createSection(section.id, section.headerText);
+      });
+
+      // Paragraph content
+      var linkContainer = document.getElementById("link-section");
+      var helloWorldParagraph = document.createElement("p");
+      helloWorldParagraph.textContent = "Hello, world!";
+      linkContainer.appendChild(helloWorldParagraph);
+
+      // Image
+      var imageContainer = document.getElementById("image-section");
+      var image = document.createElement("img");
+      image.setAttribute(
+        "src",
+        "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMThfaGFwcHlfc21pbGluZ19nb2xkZW5fcmV0cml2ZXJfcHVwcHlfb25fd2hpdGVfYl8xOTAzYWI3Ni04NjQzLTQxNzYtODY3ZS01MjUxNDk1MGExNTMucG5n.png"
+      );
+      image.setAttribute("alt", "Example Image");
+      image.setAttribute("width", "250");
+      imageContainer.appendChild(image);
+
+      // Video
+      var videoContainer = document.getElementById("video-section");
+      var video = document.createElement("video");
+      video.setAttribute("src", "https://www.w3schools.com/html/mov_bbb.mp4");
+      video.setAttribute("controls", "");
+      videoContainer.appendChild(video);
+
+      // Audio
+      var audioContainer = document.getElementById("audio-section");
+      var audio = document.createElement("audio");
+      audio.setAttribute("src", "../assets/songs/LovelyBillieEilish.mp3");
+      audio.setAttribute("controls", "");
+      audioContainer.appendChild(audio);
+    </script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+  <footer>
+    <div class="container">
+      <p>© 2024 Web API</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+</html>
+
+<!-- 
+
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Element Creation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      .navbar {
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+      }
+
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .section {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .section p {
+        background-color: #f6e58d; /* Paragraph background color */
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .section-header {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .media-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .media-item {
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .media-item img,
+      .media-item video,
+      .media-item audio {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Different background colors for image, video, and audio sections */
+      #image-section {
+        background-color: #badc58; /* Image background color */
+      }
+
+      #video-section {
+        background-color: #ff7979; /* Video background color */
+      }
+
+      #audio-section {
+        background-color: #686de0; /* Audio background color */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#link-section">Paragraph</a>
+      <a href="#image-section">Image</a>
+      <a href="#video-section">Video</a>
+      <a href="#audio-section">Audio</a>
+    </div>
+
+    <div class="section" id="link-section">
+      <h2 class="section-header">Hello World!</h2>
+    </div>
+
+    <div class="section" id="image-section">
+      <h2 class="section-header">Image</h2>
+      <div class="media-container" id="image-container">
+        <!-- Image will be inserted here
+      </div>
+    </div>
+
+    <div class="section" id="video-section">
+      <h2 class="section-header">Video</h2>
+      <div class="media-container" id="video-container">
+        <!-- Video will be inserted here
+      </div>
+    </div>
+
+    <div class="section" id="audio-section">
+      <h2 class="section-header">Audio</h2>
+      <div class="media-container" id="audio-container">
+        <!-- Audio will be inserted here
+      </div>
+    </div>
+
+    <script>
+      // Paragraph content
+      var linkContainer = document.getElementById("link-section");
+      var helloWorldParagraph = document.createElement("p");
+      helloWorldParagraph.textContent = "Hello, world!";
+      linkContainer.appendChild(helloWorldParagraph);
+
+      // Image
+      var imageContainer = document.getElementById("image-container");
+      var image = document.createElement("img");
+      image.setAttribute("src", "https://via.placeholder.com/200");
+      image.setAttribute("alt", "Example Image");
+      imageContainer.appendChild(image);
+
+      // Video
+      var videoContainer = document.getElementById("video-container");
+      var video = document.createElement("video");
+      video.setAttribute("src", "https://www.w3schools.com/html/mov_bbb.mp4");
+      video.setAttribute("controls", "");
+      videoContainer.appendChild(video);
+
+      // Audio
+      var audioContainer = document.getElementById("audio-container");
+      var audio = document.createElement("audio");
+      audio.setAttribute(
+        "src",
+        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      );
+      audio.setAttribute("controls", "");
+      audioContainer.appendChild(audio);
+    </script>
+  </body>
+</html>
+
+ -->
